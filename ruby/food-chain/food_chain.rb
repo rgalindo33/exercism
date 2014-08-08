@@ -1,12 +1,10 @@
-require "pry"
 class FoodChainSong
   
   DATA   = File.read(__FILE__)[/.*__END__\n(.+)/m, 1]
-  LYRICS = DATA.scan(/\\n\\n/)
+  LYRICS = DATA.split "\n\n"
 
   def verse number
-    binding.pry
-    LYRICS[ number.pred ] + "\n" 
+    LYRICS[ number.pred ] + "\n"
   end
 
   def verses start_verse, end_verse
